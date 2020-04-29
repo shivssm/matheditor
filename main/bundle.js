@@ -6572,11 +6572,11 @@ const Mathml2asciimath = require('mathml2asciimath');
 const MathMl2LaTeX = require('mathml2latex');
 
 window.output2 = function() {
-    document.getElementById("latex").value = MathMl2LaTeX.convert(document.getElementById("mathml").value);
+    document.getElementById("latex").value = '$$' + MathMl2LaTeX.convert(document.getElementById("mathml").value) + '$$';
 }
 
 window.output3 = function() {
-    document.getElementById("asciimath").value = new Mathml2asciimath(document.getElementById("mathml").value).convert();
+    document.getElementById("asciimath").value = '`' + new Mathml2asciimath(document.getElementById("mathml").value).convert() + '`';
 }
 
 window.mathmlCopy = function() {

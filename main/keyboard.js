@@ -323,6 +323,10 @@ $(function() {
   $('.rlharpoons').click(function() {
     sendChar('\\rightleftharpoons');
   });
+
+   $('.space').click(function() {
+    sendChar('\\;');
+  });
   
 
   $('.tab').click(function() {

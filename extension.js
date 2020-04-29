@@ -202,6 +202,9 @@ function getWebviewContent(xaSrc, scriptUri, jquerymin, keboard, keboardcss, mat
 				<li class="leftarrow"><img src='${xaSrc}/leftarrow.png'></li>
 				<li class="rightarrow"><img src='${xaSrc}/rightarrow.png'></li>
 				<li class="Leftarrow"><img src='${xaSrc}/Leftarrows.png'></li>
+
+				<li class="space" style="width: 10%; background: #34eb40;"><img src='${xaSrc}/space_bar.png'></li>
+
 				<li class="Rightarrow"><img src='${xaSrc}/Rightarrows.png'></li>
 				<li class="mapsto"><img src='${xaSrc}/mapsto.png'></li>
 				<li class="lr_arrow"><img src='${xaSrc}/Leftrightarrow.png'></li>
