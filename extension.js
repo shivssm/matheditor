@@ -10,69 +10,72 @@ const path = require('path');
  */
 function activate(context) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "matheditor" is now active!');
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log('Congratulations, your extension "matheditor" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.mathEditor', function () {
-		// The code you place here will be executed every time your command is executed
-		const panel = vscode.window.createWebviewPanel('mathEditor', 'Math Editor',
-		vscode.ViewColumn.One, { enableScripts: true }
-		);
+    // The command has been defined in the package.json file
+    // Now provide the implementation of the command with  registerCommand
+    // The commandId parameter must match the command field in package.json
+    let disposable = vscode.commands.registerCommand('extension.mathEditor', function() {
+        // The code you place here will be executed every time your command is executed
+        const panel = vscode.window.createWebviewPanel('mathEditor', 'Math Editor',
+            vscode.ViewColumn.One, { enableScripts: true }
+        );
 
-		panel.webview.html = getWebviewContent();
-		const onDiskPath = vscode.Uri.file(
-			path.join(context.extensionPath, 'icon')
-		);
+        panel.webview.html = getWebviewContent();
+        const onDiskPath = vscode.Uri.file(
+			// Here we have added icons for keyboard buttons
+            path.join(context.extensionPath, 'icon')
+        );
 
-		const xaSrc = panel.webview.asWebviewUri(onDiskPath);
-		//panel.webview.html = onDiskPath;
+        const xaSrc = panel.webview.asWebviewUri(onDiskPath);
 
-		const onDiskPathS = vscode.Uri.file(
-			path.join(context.extensionPath, 'main', 'bundle.js')
-		);
+        const onDiskPathS = vscode.Uri.file(
+			// This contains bundle of all necessary node packages conversion tools combined using browserify
+            path.join(context.extensionPath, 'main', 'bundle.js')
+        );
 
-		const scriptUri = panel.webview.asWebviewUri(onDiskPathS);
+        const scriptUri = panel.webview.asWebviewUri(onDiskPathS);
 
-		const onDiskPathj = vscode.Uri.file(
-			path.join(context.extensionPath, 'main', 'jquery-3.4.1.min.js')
-		);
+        const onDiskPathj = vscode.Uri.file(
+			// Adding jquery
+            path.join(context.extensionPath, 'main', 'jquery-3.4.1.min.js')
+        );
 
-		const jquerymin = panel.webview.asWebviewUri(onDiskPathj);
+        const jquerymin = panel.webview.asWebviewUri(onDiskPathj);
 
-		const onDiskPathk = vscode.Uri.file(
-			path.join(context.extensionPath, 'main', 'keyboard.js')
-		);
+        const onDiskPathk = vscode.Uri.file(
+			// This contains javascript file for on-screen keyboard (Symbol Table)
+            path.join(context.extensionPath, 'main', 'keyboard.js')
+        );
 
-		const keboard = panel.webview.asWebviewUri(onDiskPathk);
+        const keboard = panel.webview.asWebviewUri(onDiskPathk);
 
-		const onDiskPathstyle = vscode.Uri.file(
-			path.join(context.extensionPath, 'main', 'keyboard.css')
-		);
+        const onDiskPathstyle = vscode.Uri.file(
+			// This contains css file for on-screen keyboard (Symbol Table)
+            path.join(context.extensionPath, 'main', 'keyboard.css')
+        );
 
-		const keboardcss = panel.webview.asWebviewUri(onDiskPathstyle);
+        const keboardcss = panel.webview.asWebviewUri(onDiskPathstyle);
 
-		const onDiskPathm = vscode.Uri.file(
-			path.join(context.extensionPath, 'node_modules', 'mathjax-node', 'node_modules', 'mathjax', 'MathJax.js')
-		);
+        const onDiskPathm = vscode.Uri.file(
+            path.join(context.extensionPath, 'node_modules', 'mathjax-node', 'node_modules', 'mathjax', 'MathJax.js')
+        );
 
-		const mathjaxs = panel.webview.asWebviewUri(onDiskPathm);
-		
+        const mathjaxs = panel.webview.asWebviewUri(onDiskPathm);
 
-		panel.webview.html = getWebviewContent(xaSrc, scriptUri, jquerymin, keboard, keboardcss, mathjaxs);
-	});
 
-	context.subscriptions.push(disposable);
+        panel.webview.html = getWebviewContent(xaSrc, scriptUri, jquerymin, keboard, keboardcss, mathjaxs);
+    });
+
+    context.subscriptions.push(disposable);
 }
 
 
-function getWebviewContent(xaSrc, scriptUri, jquerymin, keboard, keboardcss, mathjaxs){
-	return `<!DOCTYPE html>
+function getWebviewContent(xaSrc, scriptUri, jquerymin, keboard, keboardcss, mathjaxs) {
+    return `<!DOCTYPE html>
 	<head>
-		<title>Virtual Keyboard w/ HTML, CSS & JS</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="${keboardcss}">
@@ -230,6 +233,6 @@ exports.activate = activate;
 function deactivate() {}
 
 module.exports = {
-	activate,
-	deactivate
+    activate,
+    deactivate
 }
