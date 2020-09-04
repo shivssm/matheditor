@@ -1,6 +1,6 @@
-# matheditor README
+# MathEditor README
 
-This is the README for extension "matheditor".
+This is the README for extension "MathEditor".
 
 ## Features
 
@@ -15,7 +15,7 @@ A vs code webview extension to write mathmatical formula easily.
 VS Code Editor. You can download it here https://code.visualstudio.com/download.
 
 To install the extension:
-1. Download the repository
+1. Download the repository from https://github.com/shivssm/matheditor 
 2. Do 'npm install' in your command line after reaching into directory to install the dependencies.
 3. Open the folder in vs code editor.
 4. Run the extension using (`ctrl+shift+p` for windows);
@@ -26,7 +26,7 @@ Sometimes conversion into asciimath code having trouble.
 
 ## Release Notes
 
-### 1.0.0
+### 0.2.0
 
 Initial release of Math Editor (a vs code webview extension to write equation)
 
